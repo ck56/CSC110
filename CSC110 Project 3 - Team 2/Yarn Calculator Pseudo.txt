@@ -1,0 +1,39 @@
+PRINT Intro 
+
+patternInfo    = input('What is the name of the pattern that you picked out? ')
+patternYarn    = input('What is the yarn weight that the pattern calls for? ')
+patternYardage = input('How many yards does the pattern call for? ')
+yarn_que       = input('    Are you ready to enter yarn? ')
+
+WHILE (yarn_que == "y"):
+    yarnName    = input('What is the name of the yarn? ')
+    yarnWeight  = input('What is the weight of the yarn?  ')
+    yarnYardage = input('How many yards are in a skein? ')
+    yarnCost    = input('What is the cost of the yarn per skein? ')
+    yarnDouble  = input('Is the yarn being held double? (y/n) ')
+    IF (yarnDouble == "y"):
+        patternYardage = patternYardage * 2
+        skeins     = patternYardage/yarnYardage
+	projectCost  = yarnCost * skeins 
+	PRINT ('You will need' , skeins , 'skeins of your' , yarnWeight , yarnName , 'yarn, and it will cost: $', projectCost)
+	addYarn = input('Is there another yarn you would like to compare? (y/n) ')
+    ELSE:
+        skeins = patternYardage/yarnYardage
+        projectCost = yarnCost * skeins
+	PRINT ('You will need' , skeins , 'skeins of your' , yarnWeight , yarnName , 'yarn, and it will cost: $', projectCost)
+        addYarn = input ('Is there another yarn you would like to compare? (y/n)')
+    IF (addYarn == "n"):
+	PRINT ('Great! Happy knitting your' , patternInfo ,'! ')
+	END LOOP
+ELSE:
+    PRINT ( 'Please pick out a yarn and try again!' )
+
+
+
+DEF projectCost(yarnCost, skeins):
+    projectCost = yarnCost * skeins
+    RETURN projectCost
+
+DEF skeins(patternYardage, yarnYardage):
+    skeins = patternYardage /yarnYardage
+    RETURN skeins
